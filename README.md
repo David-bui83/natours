@@ -15,3 +15,4 @@
 
 - express
 - morgan
+- mongoose
