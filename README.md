@@ -1,18 +1,18 @@
 # NATOURS
-
-> Project for tours
+---
+Project for tours
 
 ## Useage
 > To install packages run:
-- npm install
+> - npm install
 
 > Start application:
-- npm start
+> - npm start
 
 ### Dependencies
 
-> Packages required to run program
-
-- express
-- morgan
-- mongoose
+>Packages required to run program
+> - express
+> - morgan
+> - mongoose
+> - slugify
