@@ -5,13 +5,19 @@ const {
   getTour,
   updateTour,
   deleteTour, 
-  aliasTopTours
+  aliasTopTours,
+  getToursStats,
+  getMonthlyPlan
 } = require('../controllers/tourController');
 const router = express.Router();
 
 // router.param('id', checkID);
 
 router.route('/top-5-cheap').get(aliasTopTours, getAllTours);
+
+router.route('/tour-stats').get(getToursStats);
+
+router.route('/monthly-plan/:year').get(getMonthlyPlan);
 
 router
   .route('/')
