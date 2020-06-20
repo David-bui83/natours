@@ -16,3 +16,4 @@ Project for tours
 > - morgan
 > - mongoose
 > - slugify
+> - validator
