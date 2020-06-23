@@ -88,7 +88,7 @@ tourSchema.virtual('durationWeeks').get(function() {
 })
 
 // DOCUMENT MIDDLEWARE: runs before .save() and .create(), not on many()
-tourSchema.pre('save', function(next){
+tourSchema.pre('save', function(next) {
   this.slug = slugify(this.name, { lower: true });
   next();
 });

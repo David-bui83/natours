@@ -17,3 +17,4 @@ Project for tours
 > - mongoose
 > - slugify
 > - validator
+> - bcryptjs
