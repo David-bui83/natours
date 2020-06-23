@@ -18,3 +18,4 @@ Project for tours
 > - slugify
 > - validator
 > - bcryptjs
+> - jsonwebtoken
