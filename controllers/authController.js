@@ -93,7 +93,6 @@ exports.protect = catchAsync(async (req, res, next) => {
   next();
 });
 
-
 // Restrict Route
 exports.restrictTo = (...roles) => {
   return (req, res, next) => {
@@ -114,10 +113,13 @@ exports.forgotPassword = catchAsync(async (req, res, next) => {
   }
 
   // 2) Generate the random reset
+  const resetToken = user.createPasswordResetToken();
+  await user.save({validateBeforeSave: false});
 
   // 3) Send it to user's email
+
 });
 
 exports.resetPassword = catchAsync(async (req, res, next) => {
-  
+
 });
