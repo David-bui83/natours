@@ -19,3 +19,4 @@ Project for tours
 > - validator
 > - bcryptjs
 > - jsonwebtoken
+> - nodemailer
