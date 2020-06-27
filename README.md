@@ -22,3 +22,5 @@ Project for tours
 > - nodemailer
 > - express-rate-limit
 > - helmet
+> - express-mongo-sanitize
+> - xss-clean
