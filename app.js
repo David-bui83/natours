@@ -7,6 +7,7 @@ const mongoSanitize = require('express-mongo-sanitize');
 const xss = require('xss-clean');
 const AppError = require('./utils/appError');
 const globalErrorHandler = require('./controllers/errorController');
+const hpp = require('hpp');
 
 /////////////////////////////////////////
 // GLOBAL MIDDLEWARE 
@@ -35,6 +36,17 @@ app.use(mongoSanitize());
 
 // Data sanitization against XSS
 app.use(xss());
+
+// Prevent parameter pollution
+app.use(hpp({
+  whitelist: [
+    'duration', 
+    'ratingsQuantity', 
+    'ratingsAverage', 
+    'maxGroupSize', 
+    'difficulty', 
+    'price']
+}));
 
 // serviing static files
 app.use(express.static(`/${__dirname}/public`));
