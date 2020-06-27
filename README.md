@@ -7,7 +7,7 @@ Project for tours
 > - npm install
 
 > Start application:
-> - npm start
+> - npm run start
 
 ### Dependencies
 
@@ -20,3 +20,5 @@ Project for tours
 > - bcryptjs
 > - jsonwebtoken
 > - nodemailer
+> - express-rate-limit
+> - helmet
