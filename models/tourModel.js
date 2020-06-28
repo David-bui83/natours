@@ -119,6 +119,13 @@ tourSchema.virtual('durationWeeks').get(function() {
   return this.duration / 7;
 })
 
+// Vritual populate for child referrencing 
+tourSchema.virtual('reviews', {
+  ref: 'Review', // Model name
+  foreignField: 'tour', // field name
+  localField: '_id'
+});
+
 // DOCUMENT MIDDLEWARE: runs before .save() and .create(), not on many()
 tourSchema.pre('save', function(next) {
   this.slug = slugify(this.name, { lower: true });
