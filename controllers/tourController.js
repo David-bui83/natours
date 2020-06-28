@@ -94,7 +94,7 @@ exports.getAllTours = catchAsync(async (req, res, next) => {
 
 // GET single tour by ID
 exports.getTour = catchAsync(async (req, res, next) => {
-  const tour = await Tour.findById(req.params.id);
+  const tour = await Tour.findById(req.params.id).select('-__v');
 
   if(!tour) {
     return next(new AppError('No tour found with that ID', 404));
@@ -145,7 +145,7 @@ exports.updateTour = catchAsync(async (req, res, next) =>{
     return next(new AppError('Not tour found with that ID', 404));
   }
   
-  res.status(204).json({
+  res.status(200).json({
     status: 'success',
     data: {
       tour 
