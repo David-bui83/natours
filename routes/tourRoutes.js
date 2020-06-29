@@ -7,7 +7,8 @@ const {
   deleteTour, 
   aliasTopTours,
   getToursStats,
-  getMonthlyPlan
+  getMonthlyPlan,
+  getToursWithin
 } = require('../controllers/tourController');
 const { protect, restrictTo } = require('../controllers/authController');
 // const {
@@ -23,11 +24,21 @@ router.use('/:tourId/reviews', reviewRouter);
 
 // router.param('id', checkID);
 
-router.route('/top-5-cheap').get(aliasTopTours, getAllTours);
+router
+  .route('/top-5-cheap')
+  .get(aliasTopTours, getAllTours);
 
-router.route('/tour-stats').get(getToursStats);
+router
+  .route('/tour-stats')
+  .get(getToursStats);
 
-router.route('/monthly-plan/:year').get(protect, restrictTo('admin', 'lead-guide', 'guide'), getMonthlyPlan);
+router
+  .route('/monthly-plan/:year')
+  .get(protect, restrictTo('admin', 'lead-guide', 'guide'), getMonthlyPlan);
+
+router
+  .route('/tours-within/:distance/center/:latlng/unit/:unit')
+  .get( getToursWithin);
 
 router
   .route('/')
