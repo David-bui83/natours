@@ -18,6 +18,6 @@ router
 router
   .route('/:id')
   .get(getReview)
-  .delete(deleteReview);
+  .delete(protect, restrictTo('user', 'admin'), deleteReview);
 
   module.exports = router;

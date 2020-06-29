@@ -2,6 +2,7 @@ const Tour = require('../models/tourModel');
 const APIFeatures = require('../utils/apiFeatures');
 const catchAsync = require('../utils/catchAsync');
 const AppError = require('../utils/appError');
+const factory = require('./handlerFactory');
 
 // Get top 5 cheap tours
 exports.aliasTopTours = (req, res, next) => { 
@@ -160,26 +161,27 @@ exports.updateTour = catchAsync(async (req, res, next) =>{
   // }
 });
 
-exports.deleteTour = catchAsync(async (req, res, next) => {
-  const tour = await Tour.findByIdAndDelete(req.params.id);
+exports.deleteTour = factory.deleteOne(Tour);
+// exports.deleteTour = catchAsync(async (req, res, next) => {
+//   const tour = await Tour.findByIdAndDelete(req.params.id);
 
-  if(!tour) {
-    return next(new AppError('No tour found with that ID', 404));
-  }
+//   if(!tour) {
+//     return next(new AppError('No tour found with that ID', 404));
+//   }
   
-  res.status(204).json({
-    status: 'success',
-    data: null
-  });
-  // try{
-  //   // await Tour.find(el => el.id === parseInt(req.params.id));
-  // }catch(err){
-  //   res.status(404).json({
-  //     status: 'fail',
-  //     message: 'Invalid id'
-  //   });
-  // }
-});
+//   res.status(204).json({
+//     status: 'success',
+//     data: null
+//   });
+//   // try{
+//   //   // await Tour.find(el => el.id === parseInt(req.params.id));
+//   // }catch(err){
+//   //   res.status(404).json({
+//   //     status: 'fail',
+//   //     message: 'Invalid id'
+//   //   });
+//   // }
+// });
 
 exports.getToursStats = catchAsync(async (req, res, next) => {
   const stats = await Tour.aggregate([
