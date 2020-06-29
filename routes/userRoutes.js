@@ -15,23 +15,30 @@ const {
   forgotPassword,
   resetPassword,
   updatePassword,
-  protect
+  protect, 
+  restrictTo
 } = require('../controllers/authController');
 
 const router = express.Router();
 
-router.get('/me',protect, getMe, getUser);
-
+// Open to public
 router.post('/signup', signup);
 router.post('/login', login);
-
 router.post('/forgotPassword', forgotPassword);
 router.patch('/resetPassword/:token', resetPassword);
 
+// MIDDILEWARE - Apply protect() to all routes below
+router.use(protect);
+
+// Restricted from public
+router.get('/me', getMe, getUser);
 router.patch('/updateMyPassword', protect, updatePassword);
 
-router.patch('/updateMe', protect, updateMe);
-router.delete('/deleteMe', protect, deleteMe);
+router.patch('/updateMe', updateMe);
+router.delete('/deleteMe', deleteMe);
+
+// MIDDLEWARE - Apply restricTo() to all routes below
+router.use(restrictTo('admin'));
 
 router
   .route('/')

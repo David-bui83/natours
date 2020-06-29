@@ -12,15 +12,18 @@ const { protect, restrictTo } = require('../controllers/authController');
 
 const router = express.Router({ mergeParams: true });
 
+// MIDDLEWARE - Apply to all routes below
+router.use(protect);
+
 router
   .route('/')
   .get(getAllReviews)
-  .post(protect, restrictTo('user'), setTourUserIds, createReview);
+  .post(restrictTo('user'), setTourUserIds, createReview);
 
 router
   .route('/:id')
   .get(getReview)
-  .patch(updateReview)
+  .patch(restrictTo('user', 'admin'), updateReview)
   .delete(protect, restrictTo('user', 'admin'), deleteReview);
 
   module.exports = router;
