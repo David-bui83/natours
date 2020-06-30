@@ -1,5 +1,5 @@
+const path = require('path');
 const express = require('express');
-const app = express();
 const morgan = require('morgan');
 const rateLimit = require('express-rate-limit');
 const helmet = require('helmet');
@@ -9,6 +9,15 @@ const hpp = require('hpp');
 
 const AppError = require('./utils/appError');
 const globalErrorHandler = require('./controllers/errorController');
+
+const app = express();
+
+app.set('view engine', 'pug');
+app.set('views', path.join(__dirname, 'views'));
+
+// serviing static files
+// app.use(express.static(`/${__dirname}/public`));
+app.use(express.static(path.join(__dirname, 'public')));
 
 /////////////////////////////////////////
 // GLOBAL MIDDLEWARE 
@@ -49,9 +58,6 @@ app.use(hpp({
     'price']
 }));
 
-// serviing static files
-app.use(express.static(`/${__dirname}/public`));
-
 // Test middleware
 app.use((req, res, next) => {
   req.requestTime = new Date().toISOString();
@@ -60,6 +66,13 @@ app.use((req, res, next) => {
 
 /////////////////////////////////////////
 // MOUNTING ROUTERS
+
+// Routes for rendering templates
+app.get('/', (req, res) => {
+  res.status(200).render('base');
+})
+
+
 const tourRouter = require('./routes/tourRoutes');
 const userRouter = require('./routes/userRoutes');
 const reviewRouter = require('./routes/reviewRoutes');

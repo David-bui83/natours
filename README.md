@@ -25,3 +25,4 @@ Project for tours
 > - express-mongo-sanitize
 > - xss-clean
 > - hpp
+> - pug
