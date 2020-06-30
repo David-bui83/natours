@@ -69,7 +69,10 @@ app.use((req, res, next) => {
 
 // Routes for rendering templates
 app.get('/', (req, res) => {
-  res.status(200).render('base');
+  res.status(200).render('base',{
+    tour: 'The Forest Hiker',
+    user: 'David'
+  });
 })
 
 
