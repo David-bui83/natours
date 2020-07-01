@@ -26,3 +26,4 @@ Project for tours
 > - xss-clean
 > - hpp
 > - pug
+> - cookie-parser
