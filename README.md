@@ -27,3 +27,11 @@ Project for tours
 > - hpp
 > - pug
 > - cookie-parser
+> - axios
+> - @babel-polyfill
+
+
+### Dev Dependencies
+>Packages required for development 
+> - ndb
+> - parcel-bundler
