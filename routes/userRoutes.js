@@ -1,4 +1,5 @@
 const express = require('express');
+const multer = require('multer');
 const {
   getAllUsers,
   createUser,
@@ -20,6 +21,8 @@ const {
   restrictTo
 } = require('../controllers/authController');
 
+const upload = multer({dest: 'public/img/users'});
+
 const router = express.Router();
 
 // Open to public
@@ -37,7 +40,7 @@ router.use(protect);
 router.get('/me', getMe, getUser);
 router.patch('/updateMyPassword', protect, updatePassword);
 
-router.patch('/updateMe', updateMe);
+router.patch('/updateMe', upload.single('photo'), updateMe);
 router.delete('/deleteMe', deleteMe);
 
 // MIDDLEWARE - Apply restricTo() to all routes below

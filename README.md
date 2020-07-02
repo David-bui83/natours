@@ -29,6 +29,7 @@ Project for tours
 > - cookie-parser
 > - axios
 > - @babel-polyfill
+> - multer
 
 
 ### Dev Dependencies
