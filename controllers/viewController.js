@@ -1,4 +1,5 @@
 const Tour = require('../models/tourModel');
+const User = require('../models/userModel');
 const catchAsync = require('../utils/catchAsync');
 const AppError = require('../utils/appError');
 
@@ -9,7 +10,6 @@ exports.getOverview = catchAsync(async (req, res, next) => {
 
   // 2) Build template
   // 3) Render that template using tour data from step 1)
-  
   res.status(200).render('overview', {
     title: 'All Tours',
     tours
@@ -42,9 +42,23 @@ exports.getLoginForm = (req, res) => {
 };
 
 exports.getAccount = (req, res) => {
-
-  
   res.status(200).render('account', {
     title: 'Your account'
   });
 };
+
+exports.updateUserData = catchAsync(async (req, res, next) => {
+ const udpatedUser = await User.findByIdAndUpdate(req.user.id, {
+   name: req.body.name,
+   email: req.body.email
+ },
+ {
+   new: true,
+   runValidators: true
+ });
+
+ res.status(200).render('account', {
+  title: 'Your account',
+  user: udpatedUser
+}); 
+});
