@@ -30,6 +30,7 @@ Project for tours
 > - axios
 > - @babel-polyfill
 > - multer
+> - sharp
 
 
 ### Dev Dependencies
