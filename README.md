@@ -31,6 +31,7 @@ Project for tours
 > - @babel-polyfill
 > - multer
 > - sharp
+> - html-to-text
 
 
 ### Dev Dependencies
