@@ -32,6 +32,7 @@ Project for tours
 > - multer
 > - sharp
 > - html-to-text
+> - stripe
 
 
 ### Dev Dependencies
