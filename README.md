@@ -1,6 +1,6 @@
 # NATOURS
 ---
-Project for tours
+Built using modern technologies: node.js, express, and mongoDB
 
 ## Useage
 > To install packages run:
@@ -33,6 +33,7 @@ Project for tours
 > - sharp
 > - html-to-text
 > - stripe
+> - compression
 
 
 ### Dev Dependencies

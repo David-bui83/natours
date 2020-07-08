@@ -4,7 +4,7 @@ const dotenv = require('dotenv');
 // Global unhandle exception
 process.on('uncaughtException', err => {
   console.log('UNHANDLER EXCEPTION! 🤬 Shutting down...');
-  console.log(err.name, err.message);
+  // console.log(err.name, err.message);
   process.exit(1);
 });
 
@@ -29,7 +29,7 @@ const server = app.listen(PORT, () => {
 // Global unhandle rejection 
 process.on('unhandledRejection', err => {
   console.log('UNHANDLER REJECTION! 🤬 Shutting down...');
-  console.log(err.name, err.message);
+  // console.log(err.name, err.message);
   server.close(() => {
     process.exit(1);
   });
@@ -38,7 +38,7 @@ process.on('unhandledRejection', err => {
 // Global unhandle exception
 process.on('uncaughtException', err => {
   console.log('UNHANDLER EXCEPTION! 🤬 Shutting down...');
-  console.log(err.name, err.message);
+  // console.log(err.name, err.message);
   server.close(() => {
     process.exit(1);
   });
