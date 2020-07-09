@@ -34,6 +34,7 @@ Built using modern technologies: node.js, express, and mongoDB
 > - html-to-text
 > - stripe
 > - compression
+> - cors
 
 
 ### Dev Dependencies
