@@ -9,11 +9,11 @@ export const login = async (email, password) => {
       method:'POST',
       url: '/api/v1/users/login',
       data: {
-        email: email,
-        password: password
+        email,
+        password
       }
     });
-    console.log(res)
+    // console.log(res)
 
     if(res.data.status === 'success') {
       showAlert('success', 'Logged in successfully!');
@@ -22,7 +22,7 @@ export const login = async (email, password) => {
       },1500);
     }
   }catch(err){
-    console.log(err.response.data.message)
+    // console.log(err.response.data.message)
     showAlert('error', err.response.data.message);
   }
 };
