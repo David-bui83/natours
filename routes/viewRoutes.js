@@ -17,6 +17,8 @@ const {
 
 const router = express.Router();
 
+router.use(alerts);
+
 router.get('/', isLoggedIn, getOverview);
 router.get('/tour/:slug', isLoggedIn, getTour);
 router.get('/login', isLoggedIn, getLoginForm);
