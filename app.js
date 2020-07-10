@@ -38,7 +38,7 @@ app.use(cors());
 //   origin: 'https://www.natours.com'
 // }))
 
-app.options('*'. cors());
+app.options('*', cors());
 
 // serviing static files
 // app.use(express.static(`/${__dirname}/public`));
